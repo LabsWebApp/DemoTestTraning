@@ -36,13 +36,13 @@ public static class Captcha
             switch (r.Next(3))
             {
                 case 0:
-                    code.Append(r.Next('A', 'Z' + 1));
+                    code.Append((char)r.Next('A', 'Z' + 1));
                     break;
                 case 1:
-                    code.Append(r.Next('a', 'z' + 1));
+                    code.Append((char)r.Next('a', 'z' + 1));
                     break;
                 default:
-                    code.Append(r.Next('0', '9' + 1));
+                    code.Append((char)r.Next('0', '9' + 1));
                     break;
             }
 
