@@ -63,10 +63,10 @@ public static class Captcha
         if (useLowercase) code = code.ToLower();
 
         return string.Concat(SHA256.HashData(
-            Encoding.UTF8.GetBytes(code)).Select(x => x.ToString("X2")));
+            Encoding.UTF8.GetBytes(code.Trim())).Select(x => x.ToString("X2")));
     }
 
-    public static bool VerifyHashedString(string hashedCode, string? code, bool useLowercase = true)
+    public static bool VerifyHashedString(string hashedCode, string? code, bool useLowercase)
     {
         if (string.IsNullOrWhiteSpace(code)) return false;
         if (useLowercase) code = code.ToLower();

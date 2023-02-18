@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ViewModelCommandsBases.Commands;
 
 namespace ViewModelCommandsBases;
 
@@ -52,4 +53,9 @@ public abstract class ViewModelBase : INotifyPropertyChanged
         OnPropertyChanged(propertyName);
         return true;
     }
+
+    /// <summary>
+    /// Обработчик ошибок, устанавливается непосредственно из View 
+    /// </summary>
+    public IErrorHandle? ErrorHandle { protected get; set; }
 }
