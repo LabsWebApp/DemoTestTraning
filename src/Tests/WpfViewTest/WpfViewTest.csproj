@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Models\CoreModel\CoreModel.csproj" />
-    <ProjectReference Include="..\..\ViewModels\ViewModelCommandsBases\ViewModelCommandsBases.csproj" />
+    <ProjectReference Include="..\..\Models\CaptchaModel\DemoTest.CaptchaModel.csproj" />
+    <ProjectReference Include="..\..\ViewModels\ViewModelCommandsBases\DemoTest.ViewModelCommandsBases.csproj" />
   </ItemGroup>
 
 </Project>

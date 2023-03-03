@@ -3,7 +3,7 @@ using System.Text;
 using CaptchaGen.SkiaSharp;
 using SkiaSharp;
 
-namespace CoreModel;
+namespace CaptchaModel;
 
 public static class Captcha
 {
@@ -30,9 +30,25 @@ public static class Captcha
         var size = CodeFontSize +
                    Math.Min(imageWidth - MinImageWidth, imageHeight - MinImageHeight) / CodeLength;
 
+        var code = SaltGen();
+
+        return (
+            GetHashString(code),
+            new CaptchaGenerator(
+                paintColorHex, backgroundColorHex, noisePointColorHex,
+                imageWidth, imageHeight,
+                fontSize: size)
+                    .GenerateImageAsByteArray(code.ToString(), SKEncodedImageFormat.Png));
+    }
+
+    public static string SaltGen(int length = CodeLength, int maxLength = 0)
+    {
         Random r = new();
-        var code = new StringBuilder(CodeLength);
-        for (var i = 0; i < CodeLength; i++)
+        if (length <= 0) length = CodeLength;
+        if (maxLength > length) length = r.Next(length, maxLength + 1);
+
+        var code = new StringBuilder(length);
+        for (var i = 0; i < length; i++)
             switch (r.Next(3))
             {
                 case 0:
@@ -46,17 +62,13 @@ public static class Captcha
                     break;
             }
 
-        return (
-            GetHashString(code.ToString()),
-            new CaptchaGenerator(
-                paintColorHex, backgroundColorHex, noisePointColorHex,
-                imageWidth, imageHeight,
-                fontSize: size)
-                    .GenerateImageAsByteArray(code.ToString(), SKEncodedImageFormat.Png));
+        return code.ToString();
     }
 
-    public static string GetHashString(string code, bool useLowercase = true)
+    public static string GetHashString(string code, bool useLowercase = true, string salt = "")
     {
+        code += salt;
+
         if (string.IsNullOrWhiteSpace(code))
             throw new ArgumentException("Пустая строка не пригодна для хэширования", nameof(code));
 
@@ -66,9 +78,10 @@ public static class Captcha
             Encoding.UTF8.GetBytes(code.Trim())).Select(x => x.ToString("X2")));
     }
 
-    public static bool VerifyHashedString(string hashedCode, string? code, bool useLowercase)
+    public static bool VerifyHashedString(string hashedCode, string? code, bool useLowercase, string salt = "")
     {
         if (string.IsNullOrWhiteSpace(code)) return false;
+        code = code.Trim() + salt;
         if (useLowercase) code = code.ToLower();
         return hashedCode == GetHashString(code);
     }

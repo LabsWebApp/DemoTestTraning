@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
-using CoreModel;
+using CaptchaModel;
 using ViewModelCommandsBases;
 using ViewModelCommandsBases.Commands;
 
@@ -15,13 +15,13 @@ public class CaptchaViewModel : ViewModelBase
 
     public CaptchaViewModel()
     {
-        RefreshCommand = new SimpleCommand(Refresh);
+        RefreshCommand = new TheSimplestCommand(Refresh);
     }
 
     private void Refresh()
     {
-        Title = "Captcha Test - не пройден...";
         _captcha = Captcha.GenerateImageAsByteArray();
+        Title = "Captcha Test - не пройден...";
         OnPropertyChanged(nameof(CaptchaImage));
     }
 

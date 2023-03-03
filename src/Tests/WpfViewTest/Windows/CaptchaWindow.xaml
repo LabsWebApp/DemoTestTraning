@@ -11,7 +11,7 @@
         <vm:CaptchaViewModel />
     </Window.DataContext>
     <Grid>
-        <Image Source="{Binding CaptchaImage}" Width="120" Height="48" d:DesignWidth="200" />
+        <Image Source="{Binding CaptchaImage}" Width="120" Height="48" />
         <TextBox x:Name="TxtBox"
             Width="120" Height="24" Margin="0,100,0,0"
                  Text="{Binding Text, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
@@ -19,7 +19,6 @@
                 Height="{Binding ElementName=TxtBox, Path=Height}"
                 Margin="0,166,0,0"
                 Command="{Binding RefreshCommand}">
-            Refresh
         </Button>
     </Grid>
 </Window>
