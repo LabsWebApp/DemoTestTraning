@@ -15,7 +15,7 @@ namespace ViewModelCommandsBases.Commands
 
         public bool CanExecute(object? parameter) => true;
 
-        public void Execute(object? parameter) => _execute.Invoke();
+        public void Execute(object? parameter) => _execute?.Invoke();
 
         public event EventHandler? CanExecuteChanged;
     }

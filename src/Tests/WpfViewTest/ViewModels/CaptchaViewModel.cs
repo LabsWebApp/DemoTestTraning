@@ -3,6 +3,7 @@ using System.Windows.Input;
 using CaptchaModel;
 using ViewModelCommandsBases;
 using ViewModelCommandsBases.Commands;
+using static DataModels.Helpers.HashHandlers;
 
 namespace WpfViewTest.ViewModels;
 
@@ -37,7 +38,7 @@ public class CaptchaViewModel : ViewModelBase
     {
         set
         {
-            if (Captcha.VerifyHashedString(_captcha.HashCaptchaCode, value, true))
+            if (VerifyHashedString(_captcha.HashCaptchaCode, value, true))
                 Title = "Ура! Test - пройден!";
         }
     }

@@ -1,16 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
+    <RootNamespace>ViewModels</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Models\CaptchaModel\DemoTest.CaptchaModel.csproj" />
     <ProjectReference Include="..\..\Models\DemoTest.DataModels\DemoTest.DataModels.csproj" />
-    <ProjectReference Include="..\..\ViewModels\ViewModelCommandsBases\DemoTest.ViewModelCommandsBases.csproj" />
+    <ProjectReference Include="..\ViewModelCommandsBases\DemoTest.ViewModelCommandsBases.csproj" />
   </ItemGroup>
 
 </Project>
