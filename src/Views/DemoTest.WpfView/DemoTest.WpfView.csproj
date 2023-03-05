@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\ViewModels\DemoTest.ViewModels\DemoTest.ViewModels.csproj" />
   </ItemGroup>
 

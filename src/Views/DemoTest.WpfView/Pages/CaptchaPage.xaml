@@ -12,41 +12,46 @@
         <vm:CaptchaViewModel />
     </Page.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="24"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="{Binding ElementName=Img, Path=Width}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.ColumnSpan="3"  HorizontalAlignment="Center" Content="Подтвердите, что вы человек" FontWeight="Bold"/>
-        <Image Grid.Row="1" Grid.Column="1" x:Name="Img"
+        <Label Grid.ColumnSpan="3"  
+               HorizontalAlignment="Center" 
+               FontWeight="Bold" 
+               VerticalAlignment="Center" 
+               Margin="0,0,0,100"
+               Content="Подтвердите, что Вы человек!" />
+        <Image Grid.Column="1" x:Name="Img"
                Source="{Binding Image}" 
                Width="120" Height="48" />
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-            <TextBox x:Name="TxtBox"
-                     Width="86" 
-                     Height="22"
-                     Margin="0,100,0,0"
-                     MaxLength="{Binding CodeLength, Mode=OneTime}"
+        <Button Grid.Column="2" 
+                Height="26"
+                Width="26"
+                Style="{StaticResource LightweightButton}"
+                ToolTip="Обновить код!"
+                Command="{Binding Refresh}" HorizontalAlignment="Left">
+            <Label Content="&#xE117;" FontFamily="Segoe UI Symbol" Foreground="Navy" FontWeight="Bold"/>
+        </Button>
+        <Label Grid.Column="0" Grid.ColumnSpan="3" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" 
+               Margin="0,70,0,0"
+               Content="Код, изображённый на картинке:" />
+        <TextBox Grid.Column="1" x:Name="TxtBox"
+                 Width="{Binding ElementName=Img, Path=Width}" 
+                 Height="22"
+                 Margin="0,113,0,0"
+                 MaxLength="{Binding CodeLength, Mode=OneTime}"
                      
-                     Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}"  />
-            <Button Margin="6,100,0,0"
-                    Height="26"
-                    Style="{StaticResource LightweightButton}"
-                    ToolTip="Обновить капчу!"
-                    Command="{Binding Refresh}">
-                <Label Content="&#xE117;" FontFamily="Segoe UI Symbol" Foreground="Navy" FontWeight="Bold"/>
-            </Button>
-        </StackPanel>
-        
-        
-        <Label Grid.Row="1" Grid.Column="2"
-               VerticalAlignment="Center"  Margin="0,100,0,0"
+                 Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}"  />
+        <Label Grid.Column="0" Grid.ColumnSpan="3" 
+               VerticalAlignment="Center"  
+               HorizontalAlignment="Center"
+               Margin="0,157,0,0"
                Visibility="{Binding Error, Converter={StaticResource BooleanToVisibility}, UpdateSourceTrigger=PropertyChanged}"
                Foreground="Red"
-               Content="Капча введена не верно!" />
+               Content="Введённый текст не соответствует изображению!" />
     </Grid> 
 </Page>

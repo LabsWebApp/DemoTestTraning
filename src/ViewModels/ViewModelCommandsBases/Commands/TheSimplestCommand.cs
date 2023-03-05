@@ -7,11 +7,11 @@ using System.Windows.Input;
 
 namespace ViewModelCommandsBases.Commands
 {
-    public class TheSimplestCommand : ICommand
+    public class CommonCommand : ICommand
     {
         private readonly Action _execute;
 
-        public TheSimplestCommand(Action execute) => _execute = execute;
+        public CommonCommand(Action execute) => _execute = execute;
 
         public bool CanExecute(object? parameter) => true;
 

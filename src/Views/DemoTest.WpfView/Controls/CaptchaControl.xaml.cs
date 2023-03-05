@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DemoTest.WpfView.Pages
+namespace DemoTest.WpfView.Controls
 {
     /// <summary>
-    /// Interaction logic for AdminPage.xaml
+    /// Interaction logic for CaptchaControl.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class CaptchaControl : UserControl
     {
-        public AdminPage()
+        public CaptchaControl()
         {
             InitializeComponent();
         }

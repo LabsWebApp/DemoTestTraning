@@ -20,17 +20,22 @@ namespace DemoTest.WpfView.Pages
     /// <summary>
     /// Interaction logic for CaptchaPage.xaml
     /// </summary>
-    public partial class CaptchaPage : Page
+    public partial class CaptchaPage
     {
+        private readonly RegToggle _toggle = new RegToggle(
+            @"Software\Microsoft\Input\Settings",
+            "EnableHwkbTextPrediction", "MultilingualEnabled");
         public CaptchaPage()
         {
             InitializeComponent();
+
             this.Loaded += (_, _) => TxtBox.Focus();
-            if (DataContext is CaptchaViewModel viewModel)
-            {
-                viewModel.Ok = () => Navigate(NavigateTo.Login, this);
-                viewModel.Focus = () => TxtBox.Focus();
-            }
+            TxtBox.GotFocus += (_, _) => _toggle.Switch(RegToggle.Toggle.Off);
+            TxtBox.LostFocus += (_, _) => _toggle.Switch(RegToggle.Toggle.On);
+
+            if (DataContext is not CaptchaViewModel viewModel) return;
+            viewModel.Ok = () => Navigate(NavigateTo.Login, this);
+            viewModel.Focus = () => TxtBox.Focus();
         }
     }
 }

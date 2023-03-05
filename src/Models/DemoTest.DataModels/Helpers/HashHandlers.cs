@@ -56,5 +56,4 @@ public static class HashHandlers
         if (useLowercase) code = code.ToLower();
         return hashedCode == GetHashString(code);
     }
-
 }

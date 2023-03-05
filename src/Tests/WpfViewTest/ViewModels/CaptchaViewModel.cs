@@ -16,7 +16,7 @@ public class CaptchaViewModel : ViewModelBase
 
     public CaptchaViewModel()
     {
-        RefreshCommand = new TheSimplestCommand(Refresh);
+        RefreshCommand = new CommonCommand(Refresh);
     }
 
     private void Refresh()

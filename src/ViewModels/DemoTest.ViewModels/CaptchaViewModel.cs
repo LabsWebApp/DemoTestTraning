@@ -16,9 +16,11 @@ namespace ViewModels
 
         public CaptchaViewModel()
         {
-            Refresh = new TheSimplestCommand(RefreshModel);
+            Refresh = new CommonCommand(RefreshModel);
             _model = CaptchaModel.Captcha.GenerateImageAsByteArray();
             _image = _model.Img;
+
+            _codeLength = DefaultCodeLength;
         }
 
         private void RefreshModel()
@@ -67,6 +69,7 @@ namespace ViewModels
             set => Set(ref _error, value);
         }
 
-        public int CodeLength => DefaultCodeLength;
+        private int _codeLength;
+        public int CodeLength => _codeLength;
     }
 }
