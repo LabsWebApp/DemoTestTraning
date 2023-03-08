@@ -17,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfViewTest", "Tests\WpfVie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoTest.CaptchaModel", "Models\CaptchaModel\DemoTest.CaptchaModel.csproj", "{26785A34-FB4C-4819-BB32-5A2E22FA4476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTest.DataModels", "Models\DemoTest.DataModels\DemoTest.DataModels.csproj", "{09480C80-CC9C-44B0-A109-CB137A2C546B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoTest.DataModels", "Models\DemoTest.DataModels\DemoTest.DataModels.csproj", "{09480C80-CC9C-44B0-A109-CB137A2C546B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTest.WpfView", "Views\DemoTest.WpfView\DemoTest.WpfView.csproj", "{837F75FF-2768-4E0F-A5D5-FDE1D2874369}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoTest.WpfView", "Views\DemoTest.WpfView\DemoTest.WpfView.csproj", "{837F75FF-2768-4E0F-A5D5-FDE1D2874369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTest.ViewModels", "ViewModels\DemoTest.ViewModels\DemoTest.ViewModels.csproj", "{0C2629B5-9985-40FE-BAB7-C42FD442FC9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoTest.ViewModels", "ViewModels\DemoTest.ViewModels\DemoTest.ViewModels.csproj", "{0C2629B5-9985-40FE-BAB7-C42FD442FC9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

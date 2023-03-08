@@ -6,7 +6,7 @@ namespace DataModels.Helpers;
 public static class HashHandlers
 {
 #if DEBUG
-    public const int DefaultCodeLength = 2;
+    public const int DefaultCodeLength = 3;
 #else
     public const int DefaultCodeLength = 8;
 #endif

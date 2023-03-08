@@ -1,14 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\ViewModels\DemoTest.ViewModels\DemoTest.ViewModels.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\ViewModels\DemoTest.ViewModels\DemoTest.ViewModels.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Helpers\Navigation.NavigateTo.cs">
+			<DependentUpon>Helpers\Navigation.cs</DependentUpon>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CalcBinding" Version="2.5.2" />
+	</ItemGroup>
 
 </Project>

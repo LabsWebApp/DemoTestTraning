@@ -4,9 +4,47 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DemoTest.WpfView.Controls"
+             xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
              mc:Ignorable="d" 
-             d:DesignHeight="Auto" d:DesignWidth="Auto">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="150" d:DesignWidth="250">
+    <StackPanel Orientation="Vertical" Margin="4"> 
+        <Label FontWeight="Bold" 
+               Content="Подтвердите, что Вы человек!" />
+        <StackPanel Orientation="Horizontal">
+            <Image x:Name="Img"
+                   Source="{Binding CaptchaImage}" 
+                   Width="120" Height="48" />
+            <Button Height="26" Width="26"
+                    Style="{StaticResource LightweightButton}"
+                    ToolTip="Обновить код!"
+                    Command="{Binding RefreshCaptcha}" Click="Button_Click">
+                <Label Content="&#xE117;" 
+                       Style="{StaticResource SymbolLbl}" 
+                       Foreground="Navy"/>
+            </Button>
+        </StackPanel>
+        <Label>Код, изображённый на картинке:</Label>
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="TxtBox"
+                     Width="{Binding ElementName=Img, Path=Width}" 
+                     Height="22"
+                     IsEnabled="{c:Binding !CaptchaOk}"
+                     MaxLength="{Binding CodeLength, Mode=OneTime}"
+                     Text="{Binding CaptchaCode, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Style="{StaticResource SymbolLbl}"
+                   Foreground="{Binding CaptchaOk, Converter={StaticResource BoolToColor}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                   Content="{Binding CaptchaOk, Converter={StaticResource BoolToYesNoSymbol}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
+        </StackPanel>
+        <!--<Label x:Name="ErrorLbl"
+               Foreground="Red"
+               Visibility="{Binding RelativeSource={RelativeSource Self}, 
+                            Path=Content, 
+                            Converter={StaticResource StringToVisibility},
+                            Mode=OneWay
+                            UpdateSourceTrigger=PropertyChanged}"
+               Content="{Binding Error, UpdateSourceTrigger=PropertyChanged}"/>-->
+        <!--<local:ShowErrorMessageLabel Content="{Binding CaptchaError, UpdateSourceTrigger=PropertyChanged}"/>-->
+        <ItemsControl Foreground="Red"
+                      ItemsSource="{Binding CaptchaErrors,UpdateSourceTrigger=PropertyChanged}"/>
+    </StackPanel>
 </UserControl>
