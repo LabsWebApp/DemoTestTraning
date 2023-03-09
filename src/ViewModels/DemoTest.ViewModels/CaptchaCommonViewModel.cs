@@ -47,7 +47,7 @@ public class CaptchaCommonViewModel : ErrorInfoViewModel
             ClearErrors(PropertyName);
             if (string.IsNullOrEmpty(value) || value.Length < CodeLength)
             {
-                if (value.Length > CodeLength >> 1)
+                if (value.Length > 0)
                     AddError(PropertyName, ErrorsDictionary[Errors.InputTextIsTooSmall]);
             }
             else 

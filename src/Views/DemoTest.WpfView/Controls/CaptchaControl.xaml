@@ -7,7 +7,7 @@
              xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="250">
-    <StackPanel Orientation="Vertical" Margin="4"> 
+    <StackPanel Orientation="Vertical"> 
         <Label FontWeight="Bold" 
                Content="Подтвердите, что Вы человек!" />
         <StackPanel Orientation="Horizontal">
