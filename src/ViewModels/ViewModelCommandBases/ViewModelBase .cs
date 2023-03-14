@@ -41,7 +41,7 @@ public abstract class ViewModelBase : INotifyPropertyChanged
     /// [set => Set(ref _field, value);]
     /// </summary>
     /// <typeparam name="T">тип свойства</typeparam>
-    /// <param name="field">ссылка на икапсулированное поле</param>
+    /// <param name="field">ссылка на инкапсулированное поле</param>
     /// <param name="value">новое значение</param>
     /// <param name="propertyName">имя свойства, по умолчанию null - определит самостоятельно</param>
     /// <returns>true/false, если свойство (/не)изменилось</returns>

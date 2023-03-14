@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:DemoTest.WpfView.Pages"
       xmlns:controls="clr-namespace:DemoTest.WpfView.Controls"
       xmlns:viewModels="clr-namespace:ViewModels;assembly=DemoTest.ViewModels"
+      xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CaptchaPage">
@@ -13,6 +14,10 @@
         <viewModels:TestViewModel />
     </Page.DataContext>
     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <Label Content="&#xE103;" 
+               Style="{StaticResource VerticalSymbolLbl}"
+               HorizontalAlignment="Left" FontSize="32"/>
+        <!--<controls:CaptchaControl Visibility="{c:Binding !CaptchaOk}"/>-->
         <controls:CaptchaControl />
         <Label Content="{Binding TestOk, UpdateSourceTrigger=PropertyChanged}" />
     </StackPanel> 

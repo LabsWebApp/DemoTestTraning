@@ -3,9 +3,9 @@ using System.ComponentModel;
 
 namespace ViewModelCommandsBases;
 
-public abstract class ErrorInfoViewModel : ViewModelBase, INotifyDataErrorInfo
+public abstract class NotifyDataErrorInfoViewModel : ViewModelBase, INotifyDataErrorInfo
 {
-    private readonly Dictionary<string, List<string>?> _errorsByPropertyName = new();
+    private readonly Dictionary<string, IList<string>?> _errorsByPropertyName = new();
 
     public IEnumerable GetErrors(string? propertyName) =>
         _errorsByPropertyName.TryGetValue(propertyName ?? string.Empty, out var result) 
@@ -32,16 +32,16 @@ public abstract class ErrorInfoViewModel : ViewModelBase, INotifyDataErrorInfo
 
     protected void ClearErrors(string propertyName)
     {
-        if (!_errorsByPropertyName.ContainsKey(propertyName)) return;
-        _errorsByPropertyName.Remove(propertyName);
-        OnErrorsChanged(propertyName);
+        if (_errorsByPropertyName.Remove(propertyName))
+            OnErrorsChanged(propertyName);
     }
 
-    protected void AdaptCollection(string propertyName, ICollection<string> collection)
+    protected void SyncCollection(string propertyName, ICollection<string> collection)
     {
         var errors = GetErrors(propertyName)?.Cast<string>().ToArray();
         if (errors is null || !errors.Any())
         {
+            _errorsByPropertyName.Remove(propertyName);
             collection.Clear();
             return;
         }

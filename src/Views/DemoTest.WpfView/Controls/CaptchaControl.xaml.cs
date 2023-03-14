@@ -35,5 +35,7 @@ namespace DemoTest.WpfView.Controls
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) => TxtBox.Focus();
+
+        private void UserControl_MouseUp(object sender, MouseButtonEventArgs e) => TxtBox.Focus();
     }
 }

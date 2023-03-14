@@ -7,6 +7,14 @@
         <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
     </Style>
 
+    <Style x:Key="VerticalSymbolLbl" TargetType="Label" BasedOn="{StaticResource SymbolLbl}">
+        <Setter Property="LayoutTransform">
+            <Setter.Value>
+                <RotateTransform Angle="-90" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="Button" x:Key="LightweightButton">
         <Setter Property="Template">
             <Setter.Value>

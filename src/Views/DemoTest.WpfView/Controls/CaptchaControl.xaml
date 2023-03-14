@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DemoTest.WpfView.Controls"
              xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="250">
+             d:DesignHeight="150" d:DesignWidth="250" MouseUp="UserControl_MouseUp">
     <StackPanel Orientation="Vertical"> 
         <Label FontWeight="Bold" 
                Content="Подтвердите, что Вы человек!" />
@@ -30,7 +30,11 @@
                      Height="22"
                      IsEnabled="{c:Binding !CaptchaOk}"
                      MaxLength="{Binding CodeLength, Mode=OneTime}"
-                     Text="{Binding CaptchaCode, UpdateSourceTrigger=PropertyChanged}" />
+                     Text="{Binding CaptchaCode, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding Path=RefreshCaptcha}" Key="Enter" />
+                </TextBox.InputBindings>
+            </TextBox>
             <Label Style="{StaticResource SymbolLbl}"
                    Foreground="{Binding CaptchaOk, Converter={StaticResource BoolToColor}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
                    Content="{Binding CaptchaOk, Converter={StaticResource BoolToYesNoSymbol}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />

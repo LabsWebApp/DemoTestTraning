@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Models\CaptchaModel\DemoTest.CaptchaModel.csproj" />
     <ProjectReference Include="..\..\Models\DemoTest.DataModels\DemoTest.DataModels.csproj" />
-    <ProjectReference Include="..\..\ViewModels\ViewModelCommandsBases\DemoTest.ViewModelCommandsBases.csproj" />
+    <ProjectReference Include="..\..\ViewModels\ViewModelCommandsBases\DemoTest.ViewModelCommandBases.csproj" />
   </ItemGroup>
 
 </Project>
