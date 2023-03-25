@@ -8,9 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome6.Pro.Fonts" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Models\CaptchaModel\DemoTest.CaptchaModel.csproj" />
     <ProjectReference Include="..\..\Models\DemoTest.DataModels\DemoTest.DataModels.csproj" />
-    <ProjectReference Include="..\..\ViewModels\ViewModelCommandsBases\DemoTest.ViewModelCommandsBases.csproj" />
+    <ProjectReference Include="..\..\ViewModels\ViewModelCommandBases\DemoTest.ViewModelCommandBases.csproj" />
+    <ProjectReference Include="..\..\Views\Wpf\WinControl.WpfLib\WinControl.WpfLib.csproj" />
   </ItemGroup>
 
 </Project>

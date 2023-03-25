@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="DemoTest.WpfView.Controls.CaptchaControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="250" MouseUp="UserControl_MouseUp">
+    <StackPanel Orientation="Vertical"> 
+        <Label FontWeight="Bold" 
+               Content="Подтвердите, что Вы человек!" />
+        <StackPanel Orientation="Horizontal">
+            <Image x:Name="Img"
+                   Source="{Binding CaptchaImage}" 
+                   Width="120" Height="48" />
+            <Button Height="26" Width="26"
+                    IsEnabled="{c:Binding !CaptchaOk}"
+                    Style="{StaticResource LightweightButton}"
+                    ToolTip="Обновить код!"
+                    Command="{Binding RefreshCaptcha}" 
+                    Click="Button_Click">
+                <Label Content="&#xE117;" 
+                       Style="{StaticResource SymbolLbl}" 
+                       Foreground="Navy"/>
+            </Button>
+        </StackPanel>
+        <Label>Код, изображённый на картинке:</Label>
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="TxtBox"
+                     Width="{Binding ElementName=Img, Path=Width}" 
+                     Height="22"
+                     IsEnabled="{c:Binding !CaptchaOk}"
+                     MaxLength="{Binding CodeLength, Mode=OneTime}"
+                     Text="{Binding CaptchaCode, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding Path=RefreshCaptcha}" Key="Enter" />
+                </TextBox.InputBindings>
+            </TextBox>
+            <Label Style="{StaticResource SymbolLbl}"
+                   Foreground="{c:Binding 'CaptchaOk ? &quot;Green&quot; : &quot;Red&quot;', Mode=OneWay}"
+                   Content="{c:Binding 'CaptchaOk ? &quot;&#xE10B;&quot;:&quot;&#xE10A;&quot;', Mode=OneWay}"/>
+        </StackPanel>
+        <!--
+                   Foreground="{c:Binding 'CaptchaOk?&quot;Green&quot;:&quot;Red&quot;', Mode=OneWay}"
+                   Content="{c:Binding 'CaptchaOk?&quot;&#xE10B;&quot;:&quot;&#xE10A;&quot;', Mode=OneWay}"
+                   
+                   Foreground="{Binding CaptchaOk, Converter={StaticResource BoolToColor}}"
+                   Content="{Binding CaptchaOk, Converter={StaticResource BoolToYesNoSymbol}}"
+
+         
+        <Label x:Name="ErrorLbl"
+               Foreground="Red"
+               Visibility="{Binding RelativeSource={RelativeSource Self}, 
+                            Path=Content, 
+                            Converter={StaticResource StringToVisibility},
+                            Mode=OneWay
+                            UpdateSourceTrigger=PropertyChanged}"
+               Content="{Binding Error, UpdateSourceTrigger=PropertyChanged}"/>-->
+        <!--<local:ShowErrorMessageLabel Content="{Binding CaptchaError, UpdateSourceTrigger=PropertyChanged}"/>-->
+        <ItemsControl Foreground="Red" ItemsSource="{Binding CaptchaErrors}"/>
+    </StackPanel>
+</UserControl>

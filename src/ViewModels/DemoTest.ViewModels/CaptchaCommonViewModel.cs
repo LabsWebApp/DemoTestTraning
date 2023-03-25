@@ -3,12 +3,12 @@ using System.Windows.Input;
 
 namespace ViewModels;
 
-public class CaptchaCommonViewModel : ErrorInfoViewModel
+public abstract class CaptchaCommonViewModel : NotifyDataErrorInfoViewModel
 {
-    private (string Code, byte[] Image) _model;
+    private (string? Code, byte[]? Image) _model;
     private const string PropertyName = nameof(CaptchaCode);
 
-    public CaptchaCommonViewModel()
+    private protected CaptchaCommonViewModel()
     {
         RefreshCaptcha = new CommonCommand(RefreshModel, ()=> !CaptchaOk);
         _model = CaptchaModel.Captcha.GenerateImageAsByteArray();
@@ -18,7 +18,10 @@ public class CaptchaCommonViewModel : ErrorInfoViewModel
         ErrorsChanged += (_, args) =>
         {
             if (args.PropertyName == PropertyName)
-                AdaptCollection(PropertyName, CaptchaErrors);
+            {
+                SyncCollection(PropertyName, CaptchaErrors);
+                OnPropertyChanged(nameof(CaptchaOk));
+            }
         };
     }
 
@@ -28,39 +31,46 @@ public class CaptchaCommonViewModel : ErrorInfoViewModel
 
     public int CodeLength { get; }
 
-    private byte[] _captchaImage;
+    private byte[]? _captchaImage;
 
-    public byte[] CaptchaImage
+    public byte[]? CaptchaImage
     {
         get => _captchaImage;
         set => Set(ref _captchaImage, value);
     }
 
-    private string _captchaCode = string.Empty;
-    public string CaptchaCode
+    private string? _captchaCode;
+    public string? CaptchaCode
     {
         get => _captchaCode;
         set
         {
-            if (!Set(ref _captchaCode, value)) return;
+            if (!Set(ref _captchaCode, value?.Trim())) return;
 
             ClearErrors(PropertyName);
-            if (string.IsNullOrEmpty(value) || value.Length < CodeLength)
+            if (string.IsNullOrEmpty(_captchaCode) || _captchaCode.Length < CodeLength)
             {
-                if (value.Length > 0)
+                if (_captchaCode!.Length > 0)
                     AddError(PropertyName, ErrorsDictionary[Errors.InputTextIsTooSmall]);
             }
-            else 
+            else
             {
-                if (!VerifyHashedString(value, _model.Code, true))
+                if (_model.Code != null 
+                    && !VerifyHashedString(_captchaCode, _model.Code, true))
+                {
                     AddError(PropertyName, ErrorsDictionary[Errors.CaptchaIsNotValid]);
+                }
+                else
+                {
+                    _captchaImage = null;
+                    _model.Image = null;
+                    _model.Code = null;
+                }
             }
-            OnPropertyChanged(nameof(CaptchaOk));
-            OnErrorsChanged(PropertyName);
         }
     }
 
-    public bool CaptchaOk => _captchaCode.Length == CodeLength && !CaptchaErrors.Any();
+    public bool CaptchaOk => _captchaCode?.Length > 0 && !CaptchaErrors.Any();
 
     private void RefreshModel()
     {

@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using CaptchaGen.SkiaSharp;
+﻿using CaptchaGen.SkiaSharp;
 using SkiaSharp;
 using static DataModels.Helpers.HashHandlers;
 

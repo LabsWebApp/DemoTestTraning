@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using CaptchaModel;
-using ViewModelCommandsBases;
-using ViewModelCommandsBases.Commands;
+using ViewModelCommandBases;
+using ViewModelCommandBases.Commands;
 using static DataModels.Helpers.HashHandlers;
 
 namespace WpfViewTest.ViewModels;

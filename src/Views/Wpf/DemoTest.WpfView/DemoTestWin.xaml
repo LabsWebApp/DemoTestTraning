@@ -1,0 +1,13 @@
+﻿<Window x:Class="DemoTest.WpfView.DemoTestWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wc="clr-namespace:WinControl.WpfLib;assembly=WinControl.WpfLib"
+        xmlns:local="clr-namespace:DemoTest.WpfView"
+        mc:Ignorable="d"
+        Title="DemoTestWin" Height="450" Width="800">
+    <Grid>
+        <Frame x:Name="MainFrame"/>
+    </Grid>
+</Window>

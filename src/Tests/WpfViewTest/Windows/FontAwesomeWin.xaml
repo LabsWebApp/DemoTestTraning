@@ -1,0 +1,14 @@
+﻿<wc:ChromeWin x:Class="WpfViewTest.Windows.FontAwesomeWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wc="clr-namespace:WinControl.WpfLib;assembly=WinControl.WpfLib"
+        xmlns:local="clr-namespace:WpfViewTest.Windows"
+        mc:Ignorable="d"
+        Title="FontAwesomeWin" Height="450" Width="800" MouseMove="ChromeWin_MouseMove">
+    <Grid>
+        <Button x:Name="Btn" Content="Button" Visibility="Visible"  HorizontalAlignment="Left" Margin="404,162,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</wc:ChromeWin>

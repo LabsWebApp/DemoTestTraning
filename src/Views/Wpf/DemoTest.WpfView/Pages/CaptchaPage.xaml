@@ -1,0 +1,29 @@
+﻿<Page x:Class="DemoTest.WpfView.Pages.CaptchaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DemoTest.WpfView.Pages"
+      xmlns:controls="clr-namespace:DemoTest.WpfView.Controls"
+      xmlns:viewModels="clr-namespace:ViewModels;assembly=DemoTest.ViewModels"
+      xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CaptchaPage">
+    <Page.DataContext>
+        <viewModels:TestViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </Page.Resources>
+    <StackPanel Orientation="Vertical">
+        <Label Content="&#xE103;" 
+               Style="{StaticResource VerticalSymbolLbl}"
+               HorizontalAlignment="Left" FontSize="32"/>
+        <controls:CaptchaControl />
+        <Label Content="{Binding TestOk}" />
+    </StackPanel> 
+</Page>
+ 

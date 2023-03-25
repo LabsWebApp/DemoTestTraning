@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;SYSLIB0003</NoWarn>
+	  <WarningLevel>7</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;SYSLIB0003</NoWarn>
+	  <WarningLevel>7</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="ChromeWin.Sizing.cs">
+			<DependentUpon>ChromeWin.cs</DependentUpon>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FontAwesome6.Fonts" Version="2.5.1" />
+	  <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+	</ItemGroup>
+
+</Project>
